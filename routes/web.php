@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\JurusanController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Siswa\DashboardController as SiswaDashboardController;
@@ -35,8 +36,8 @@ Route::middleware('auth')->group(function() {
 
         // Jurusan
         Route::prefix('jurusan')->name('jurusan.')->group(function() {
-            Route::get('/', )
-        })
+            Route::get('/', [JurusanController::class, 'index'])->name('index');
+        });
 
     });
 
