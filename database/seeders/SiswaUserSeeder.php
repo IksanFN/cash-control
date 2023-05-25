@@ -7,20 +7,21 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class AdminUserSeeder extends Seeder
+class SiswaUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $admin = [
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('password'),
-            'role' => 'admin',
+        $siswa = [
+            'name' => 'Iksan Fauzi',
+            'nisn' => '192010213',
+            'email' => 'iksan@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role' => 'siswa'
         ];
 
-        User::create($admin);
+        User::create($siswa);
     }
 }

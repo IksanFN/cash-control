@@ -9,31 +9,11 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Data Siswa
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Siswa</a></li>
-              <li><a class="dropdown-item" href="#">Kelas</a></li>
-              <li><a class="dropdown-item" href="#">Jurusan</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Data Bills
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Bill</a></li>
-              <li><a class="dropdown-item" href="#">Week Bill</a></li>
-              <li><a class="dropdown-item" href="#">Month Bill</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="">Bills</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="">Transaction</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Expense</a>
           </li>
         </ul>
         {{-- @auth --}}
@@ -49,7 +29,7 @@
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
-              <form action="{{ route('admin.logout') }}" method="post">
+              <form action="{{ route('siswa.logout') }}" method="post">
                 @csrf
                 <button type="submit" class="dropdown-item">Logout</button>
               </form>
