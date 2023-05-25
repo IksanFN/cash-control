@@ -2,11 +2,15 @@
     @section('content')
     <div class="row">
         <div class="col-lg-12">
+
+            {{-- Heading --}}
             <div class="card border-0 px-3 pt-2">
                 <div class="card-body">
                   <h5 class="fw-medium text-green">Kelas</h5>
                 </div>
             </div>
+
+            {{-- Card Content --}}
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card border-0 px-3 mt-3">
@@ -82,6 +86,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
     @endsection

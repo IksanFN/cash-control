@@ -9,19 +9,14 @@ use App\Http\Requests\Admin\Kelas\Store;
 
 class KelasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
+        // Get data 
         $listKelas = Kelas::latest()->paginate(5);
         $nomor = 1;
         return view('admin.kelas.index', compact('listKelas', 'nomor'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Store $request)
     {
         // Save request to variabel data
@@ -32,45 +27,42 @@ class KelasController extends Controller
 
         // Condition
         if ($kelas) {
-            return back()->with(['Berhasil' => 'Data kelas baru berhasil di tambahkan']);
+            // Flash Message
+            session()->flash('Berhasil', 'Data berhasil di tambahkan');
+            return back();
         } else {
             return back()->withErrors(['Gagal' => 'Terjadi kesalahan'])->withInput();
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Kelas $kelas)
     {
+        // Get data by Id
         $oneKelas = Kelas::whereId($kelas->id)->first();
         return view('admin.kelas.edit', compact('oneKelas'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Kelas $kelas)
     {
+        // Hidden Token
         $data = $request->except('_token');
+
+        // Update to database
         $kelas->update($data);
-        return redirect()->route('admin.kelas.index')->with(['Berhasil' => 'Data berhasil di update']);
+
+        // Flash Message
+        session()->flash('Berhasil', 'Data berhasil di update');
+
+        return redirect()->route('admin.kelas.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Kelas $kelas)
     {
+        // Delete in database
         $kelas->delete();
-        return redirect()->route('admin.kelas.index')->with(['Berhasil', 'Data berhasil di hapus']);
+
+        // Flash Message
+        session()->flash('Berhasil', 'Data berhasil di hapus');
+        return redirect()->route('admin.kelas.index');
     }
 }

@@ -33,8 +33,14 @@ Route::middleware('auth')->group(function() {
             Route::delete('delete/{kelas}', [KelasController::class, 'destroy'])->name('destroy');
         });
 
+        // Jurusan
+        Route::prefix('jurusan')->name('jurusan.')->group(function() {
+            Route::get('/', )
+        })
+
     });
 
+    // Route siswa
     Route::prefix('siswa/')->middleware('role:siswa')->name('siswa.')->group(function() {
 
         // Dashboard & Logout
