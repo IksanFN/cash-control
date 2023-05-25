@@ -49,8 +49,8 @@
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
-              <form action="" method="post">
-                
+              <form action="{{ route('admin.logout') }}" method="post">
+                @csrf
                 <button type="submit" class="dropdown-item">Logout</button>
               </form>
             </li>
