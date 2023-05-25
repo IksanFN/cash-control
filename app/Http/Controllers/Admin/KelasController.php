@@ -2,64 +2,67 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Kelas\Store;
 
 class KelasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('admin.kelas.index');
+        // Get data 
+        $listKelas = Kelas::latest()->paginate(5);
+        $nomor = 1;
+        return view('admin.kelas.index', compact('listKelas', 'nomor'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(Store $request)
     {
-        //
+        // Save request to variabel data
+        $data = $request->only('name', 'description');
+
+        // Insert to database
+        $kelas = Kelas::create($data);
+
+        // Condition
+        if ($kelas) {
+            // Flash Message
+            session()->flash('Berhasil', 'Data berhasil di tambahkan');
+            return back();
+        } else {
+            return back()->withErrors(['Gagal' => 'Terjadi kesalahan'])->withInput();
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function edit(Kelas $kelas)
     {
-        //
+        // Get data by Id
+        $oneKelas = Kelas::whereId($kelas->id)->first();
+        return view('admin.kelas.edit', compact('oneKelas'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(Request $request, Kelas $kelas)
     {
-        //
+        // Hidden Token
+        $data = $request->except('_token');
+
+        // Update to database
+        $kelas->update($data);
+
+        // Flash Message
+        session()->flash('Berhasil', 'Data berhasil di update');
+
+        return redirect()->route('admin.kelas.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function destroy(Kelas $kelas)
     {
-        //
-    }
+        // Delete in database
+        $kelas->delete();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        // Flash Message
+        session()->flash('Berhasil', 'Data berhasil di hapus');
+        return redirect()->route('admin.kelas.index');
     }
 }

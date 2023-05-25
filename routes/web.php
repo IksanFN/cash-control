@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Siswa\DashboardController as SiswaDashboardController;
 use App\Http\Controllers\Siswa\LoginController as SiswaLoginController;
@@ -25,11 +26,21 @@ Route::middleware('auth')->group(function() {
     
         // Kelas
         Route::prefix('kelas/')->name('kelas.')->group(function() {
-            Route::get('/', );
+            Route::get('/', [KelasController::class, 'index'])->name('index');
+            Route::post('/', [KelasController::class, 'store'])->name('store');
+            Route::get('edit/{kelas}', [KelasController::class, 'edit'])->name('edit');
+            Route::put('edit/{kelas}', [KelasController::class, 'update'])->name('update');
+            Route::delete('delete/{kelas}', [KelasController::class, 'destroy'])->name('destroy');
         });
+
+        // Jurusan
+        Route::prefix('jurusan')->name('jurusan.')->group(function() {
+            Route::get('/', )
+        })
 
     });
 
+    // Route siswa
     Route::prefix('siswa/')->middleware('role:siswa')->name('siswa.')->group(function() {
 
         // Dashboard & Logout
