@@ -15,7 +15,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Siswa</a></li>
-              <li><a class="dropdown-item" href="#">Kelas</a></li>
+              <li><a class="dropdown-item" href="{{ route('admin.kelas.index') }}">Kelas</a></li>
               <li><a class="dropdown-item" href="#">Jurusan</a></li>
             </ul>
           </li>
