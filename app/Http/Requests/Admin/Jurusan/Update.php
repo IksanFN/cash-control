@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin\Jurusan;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class Store extends FormRequest
+class Update extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,7 +16,7 @@ class Store extends FormRequest
     {
         return [
             'name' => 'required',
-            'jurusan_code' => 'required|unique:jurusans',
+            'jurusan_code' => 'required|unique:jurusans,jurusan_code,'.$this->jurusan->id.',id',
             'description' => 'nullable',
         ];
     }

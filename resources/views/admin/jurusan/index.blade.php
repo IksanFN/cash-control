@@ -17,7 +17,7 @@
                     {{-- Form --}}
                     <div class="card border-0 px-3 mt-3">
                         <div class="card-body">
-                            <form action="{{ route('admin.kelas.store') }}" method="post">
+                            <form action="{{ route('admin.jurusan.store') }}" method="post">
                                 @csrf
                                 <div class="mb-3">
                                     <label class="mb-1">Name</label>
@@ -65,7 +65,7 @@
                                             <th>No</th>
                                             <th>Nama Jurusan</th>
                                             <th>Kode Jurusan</th>
-                                            <th style="max-width: 100px">Description</th>
+                                            <th style="max-width: 100px">Deskripsi</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -77,12 +77,12 @@
                                             <td>{{ $jurusan->jurusan_code }}</td>
                                             <td style="max-width: 150px">{{ $jurusan->description }}</td>
                                             <td class="text-center d-flex">
-                                                {{-- <a href="{{ route('admin.jurusan.edit', $jurusan->id) }}" class="btn btn-sm shadow-sm btn-primary">Edit</a>
+                                                <a href="{{ route('admin.jurusan.edit', $jurusan->id) }}" class="btn btn-sm shadow-sm btn-primary">Edit</a>
                                                 <form action="{{ route('admin.jurusan.destroy', $jurusan->id) }}" class="ms-1" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm shadow-sm btn-danger">Delete</button>
-                                                </form> --}}
+                                                </form>
                                             </td>
                                         </tr>
                                         @empty

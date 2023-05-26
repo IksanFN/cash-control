@@ -37,6 +37,10 @@ Route::middleware('auth')->group(function() {
         // Jurusan
         Route::prefix('jurusan')->name('jurusan.')->group(function() {
             Route::get('/', [JurusanController::class, 'index'])->name('index');
+            Route::post('/', [JurusanController::class, 'store'])->name('store');
+            Route::get('/edit/{jurusan}', [JurusanController::class, 'edit'])->name('edit');
+            Route::put('/edit/{jurusan}', [JurusanController::class, 'update'])->name('update');
+            Route::delete('/delete/{jurusan}', [JurusanController::class, 'destroy'])->name('destroy');
         });
 
     });
