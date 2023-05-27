@@ -19,7 +19,7 @@
 <body class="bg-light">
 
     {{-- Navbar --}}
-    <x-admin-navbar></x-admin-navbar>
+    @include('admin.partials.navbar')
 
     <section class="container my-3">
         @yield('content')

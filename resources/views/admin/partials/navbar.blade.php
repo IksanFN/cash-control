@@ -30,6 +30,9 @@
             </ul>
           </li>
           <li class="nav-item">
+            <a class="nav-link {{ ($title == 'User') ? 'active' : '' }}" href="{{ route('admin.user.index') }}">Users</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="">Transaction</a>
           </li>
           <li class="nav-item">

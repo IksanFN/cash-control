@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\JurusanController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Siswa\DashboardController as SiswaDashboardController;
 use App\Http\Controllers\Siswa\LoginController as SiswaLoginController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,15 @@ Route::middleware('auth')->group(function() {
             Route::get('/edit/{jurusan}', [JurusanController::class, 'edit'])->name('edit');
             Route::put('/edit/{jurusan}', [JurusanController::class, 'update'])->name('update');
             Route::delete('/delete/{jurusan}', [JurusanController::class, 'destroy'])->name('destroy');
+        });
+
+        // User
+        Route::prefix('user')->name('user.')->group(function() {
+            Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::post('/', [UserController::class, 'store'])->name('store');
+            Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
+            Route::put('/edit/{user}', [UserController::class, 'update'])->name('update');
+            Route::delete('/delete/{user}', [UserController::class, 'destroy'])->name('destroy');
         });
 
     });
